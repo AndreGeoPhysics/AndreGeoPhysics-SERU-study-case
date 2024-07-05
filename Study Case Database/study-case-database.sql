@@ -79,5 +79,8 @@ begin
 end;
 $$;
 call class_procedure();
+--query tidak bisa dijalankan di procedure karena procedure hanya bisa menerima query yang memiliki tujuan untuk hasil datanya dan tidak bisa mengeluarkan nilai return. Function lebih cocok digunakan untuk kasus ini.
 
---query tidak bisa dijalankan di procedure karena procedure hanya bisa menerima query yang mmemiliki tujuan untuk hasil datanya dan tidak bisa mengeluarkan nilai return. Function lebih cocok digunakan untuk kasus ini.
+--5. buat query input, yang akan memberikan warning error jika ada data yang sama pernah masuk
+INSERT INTO students (name, age, class_id) VALUES ('Budi', 16, 1); 
+--warning error akan muncul jika kita memasukkan data yang sudah ada di database karena ada constraint unique. 
