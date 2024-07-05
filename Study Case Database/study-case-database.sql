@@ -44,3 +44,10 @@ INSERT INTO students (name, age, class_id) VALUES ('Ani', 17, 2);
 INSERT INTO students (name, age, class_id) VALUES ('Candra', 18, 3);
 
 --Saya memodifikasi tabel supaya tidak ada duplikat data serta kompatibel dengan postgreSQL
+
+--1. Tampilkan daftar siswa beserta kelas dan guru yang mengajar kelas tersebut.
+select 
+students.name, classes.name, teachers.name  
+from classes 
+inner join students ON classes.id = students.class_id 
+inner join teachers on classes.teacher_id = teachers.id ;
