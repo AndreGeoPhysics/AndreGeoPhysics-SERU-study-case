@@ -51,3 +51,6 @@ students.name, classes.name, teachers.name
 from classes 
 inner join students ON classes.id = students.class_id 
 inner join teachers on classes.teacher_id = teachers.id ;
+
+--2. Tampilkan daftar kelas yang diajar oleh guru yang sama.
+select * from classes inner join teachers on classes.teacher_id = teachers.id where teachers.name = 'Pak Anton';
