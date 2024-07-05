@@ -64,3 +64,20 @@ classes
 inner join students ON classes.id = students.class_id 
 inner join teachers on classes.teacher_id = teachers.id ;
 select * from class_view;
+
+--4. buat query yang sama tapi menggunakan store_procedure
+create or replace procedure class_procedure()
+language plpgsql 
+as $$
+begin
+	select students.name, classes.name as classes, teachers.name as teacher 
+	from 
+		classes 
+	inner join students ON classes.id = students.class_id 
+	inner join teachers on classes.teacher_id = teachers.id;
+	return;
+end;
+$$;
+call class_procedure();
+
+--query tidak bisa dijalankan di procedure karena procedure hanya bisa menerima query yang mmemiliki tujuan untuk hasil datanya dan tidak bisa mengeluarkan nilai return. Function lebih cocok digunakan untuk kasus ini.
